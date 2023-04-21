@@ -1,23 +1,15 @@
-const express = require("express");
-const cors = require("cors");
-const db = require("./configuration");
-const routes = require("./routes/route");
+const express = require("express")
+const app = express()
+const multer = require("multer")
+const route = require("./route/route")
+const cors = require("cors")
 
-const app = express();
+app.use(express.json())
+app.use(multer().any())
+app.use(cors({origin:"*"}))
 
-// Middlewares
-app.use(cors());
-app.use(express.json());
 
-// Routes
-app.use("/", routes);
+app.use("/", route)
 
-// Start the server
-db.authenticate()
-  .then(() => {
-    console.log("Connected to the database.");
-    app.listen(3001, () => {
-      console.log("Server started on port 3001.");
-    });
-  })
-  .catch((err) => console.error(err));
+
+app.listen(8080, () => console.log("Server is ready to boom on port 8080"))
