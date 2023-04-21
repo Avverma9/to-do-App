@@ -1,9 +1,15 @@
-const Sequelize = require("sequelize");
+const mysql = require('mysql2/promise');
 
-// Replace the values below with your own MySQL Workbench configuration
-const sequelize = new Sequelize("myDatabase", "root", "9576", {
-  host: "localhost",
-  dialect: "mysql",
-});
+const dbConfig = {
+  host: 'localhost',
+  user: 'root',
+  password: '9576',
+  database: 'myDatabase',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+};
 
-module.exports = sequelize;
+const pool = mysql.createPool(dbConfig);
+
+module.exports = pool;

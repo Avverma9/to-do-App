@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const taskController = require("../controllers/toDoController");
 const userController= require("../controllers/userController")
-const authMiddleware = require("../middlewares/authMiddleware");
+const authMiddleware = require("../controllers/authController");
 
 // Public routes
 router.post("/login",userController.login);
