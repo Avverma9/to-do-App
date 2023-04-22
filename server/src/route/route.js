@@ -4,10 +4,9 @@ const { createUser, getUser, userLogin, updateUser } = require("../controller/us
 
 const { createTask, getTask, updateTask, deleteTask } = require("../controller/TodoController")
 
-
+/////////////////////////////////////////////
 router.post("/user", createUser)
 router.get("/user/:id", getUser)
-
 router.post("/userLogin", userLogin)
 
 router.put("/user/:id", updateUser)
