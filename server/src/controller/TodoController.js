@@ -37,7 +37,7 @@ const getTask = async (req, res) => {
 
         let userId = req.params.userId
 
-        let qry = `select * from todotask where userId=${userId} and date='${date}'`
+        let qry = `select * from todo where userId=${userId} and date='${date}'`
 
         sqlModel.query(qry, (err, data) => {
             if (err) { return res.status(400).send({ status: false, message: err.message }) }
@@ -62,7 +62,7 @@ const updateTask = async (req, res) => {
 
         const { status } = data
 
-        let qry = `update todotask set`
+        let qry = `update todo set`
 
         if (!['done', 'pending', 'in progress', 'completed'].includes(status)) { return res.status(400).send({ status: false, message: "Please enter a valid status ('done', 'pending', 'in progress', 'completed')" }) }
         qry += ` status='${status}'`
@@ -87,7 +87,7 @@ const deleteTask = async (req, res) => {
     try {
         let id = req.params.id
 
-        let qry = `delete from todotask where id='${id}'`
+        let qry = `delete from todo where id='${id}'`
 
         sqlModel.query(qry, (err, data) => {
             if (err) { return res.status(400).send({ status: false, message: err.message }) }
