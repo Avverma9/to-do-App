@@ -13,7 +13,7 @@ const createTask = async (req, res) => {
 
         let id = uuidv4()
 
-        let qry = `insert into todotask values ('${id}', ${userId}, '${task}', '${status}', '${date}', '${time}')`
+        let qry = `insert into todo values ('${id}', ${userId}, '${task}', '${status}', '${date}', '${time}')`
 
         sqlModel.query(qry, (err, data) => {
             if (err) { return res.status(400).send({ status: false, message: err.message }) }
